@@ -1,0 +1,153 @@
+[
+  {
+    "id": "subj_phy",
+    "name": "Physics",
+    "color": "#7c3aed",
+    "files": [
+      {
+        "id": "file_nt7dcyl0",
+        "name": "Maths",
+        "description": "",
+        "questions": [
+          {
+            "id": "n32eqj1o",
+            "question": "The pair of equations $x + 2y + 5 = 0$ and $-3x - 6y + 1 = 0$ have:\n   ",
+            "options": {
+              "A": "Unique solution ",
+              "B": "Exactly 2 solution ",
+              "C": "Infinite many solutions ",
+              "D": "No solution "
+            },
+            "correct": "D",
+            "explanation": "No solution because lines are parallel "
+          },
+          {
+            "id": "tphlk9x3",
+            "question": "The father's age is six times his son's age. Four years hence, the age of the father will be four times his son's age. The present ages in years, of the son and the father are, respectively\n",
+            "options": {
+              "A": "4 and 24",
+              "B": "5 and 30",
+              "C": "6 and 26",
+              "D": "3 and 24"
+            },
+            "correct": "C",
+            "explanation": "Given, the father's age is six times his son's age.  \nWe have to find the present ages of the father and the son.  \nLet the present age of the father be $x$ years.  \nLet the present age of the son be $y$ years.  \nGiven, $x = 6y \\dots\\dots\\dots\\dots (1)$  \nAfter 4 years, the father's age is four times his son's age.  \n$(x + 4) = 4(y + 4)$  \n$x + 4 = 4y + 16$  \n$x - 4y = 16 - 4$  \n$x - 4y = 12 \\dots\\dots\\dots\\dots (2)$  \nFor solving the linear equations (1) and (2), substitute (1) in (2),  \n$6y - 4y = 12$  \n$2y = 12$  \n$y = \\frac{12}{2}$  \n$y = 6$  \nPut $y = 6$ in (1),  \n$x = 6(6)$  \n$x = 36$  \nTherefore, the present ages of the father and the son are 36 years and 6 years.\n"
+          }
+        ],
+        "createdAt": 1791190358408
+      }
+    ]
+  },
+  {
+    "id": "subj_chem",
+    "name": "Chemistry",
+    "color": "#059669",
+    "files": [
+      {
+        "id": "chem_f1",
+        "name": "Mock Test 1 - Mole Concept",
+        "description": "Basic calculations",
+        "createdAt": 1791098299491,
+        "questions": [
+          {
+            "id": "q_c1",
+            "question": "Number of moles in $22g$ of $CO_2$? $M=44$",
+            "options": {
+              "A": "$0.5$",
+              "B": "$1$",
+              "C": "$2$",
+              "D": "$0.25$"
+            },
+            "correct": "A",
+            "explanation": "$n = \\frac{22}{44}=0.5$"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "subj_math",
+    "name": "Mathematics",
+    "color": "#2563eb",
+    "files": [
+      {
+        "id": "math_f1",
+        "name": "Mock Test 1 - Algebra",
+        "description": "Quadratic & Fractions",
+        "createdAt": 1790925499491,
+        "questions": [
+          {
+            "id": "q_m1",
+            "question": "What is \\frac{1}{2} + \\frac{1}{3} ?",
+            "options": {
+              "A": "\\frac{5}{6}",
+              "B": "\\frac{2}{5}",
+              "C": "\\frac{1}{6}",
+              "D": "\\frac{2}{3}"
+            },
+            "correct": "A",
+            "explanation": "LCM 6 => \\frac{3}{6}+\\frac{2}{6}=\\frac{5}{6}"
+          },
+          {
+            "id": "q_m2",
+            "question": "Solve $x^2 -5x+6=0$",
+            "options": {
+              "A": "$x=2,3$",
+              "B": "$x=1,6$",
+              "C": "$x=-2,-3$",
+              "D": "$x=0,5$"
+            },
+            "correct": "A",
+            "explanation": "$(x-2)(x-3)=0$"
+          },
+          {
+            "id": "q_m3",
+            "question": "Evaluate $$\\int_0^1 x^2 dx$$",
+            "options": {
+              "A": "\\frac{1}{3}",
+              "B": "\\frac{1}{2}",
+              "C": "1",
+              "D": "\\frac{2}{3}"
+            },
+            "correct": "A",
+            "explanation": "$[x^3/3]_0^1=1/3$"
+          }
+        ]
+      },
+      {
+        "id": "math_f2",
+        "name": "Mock Test 2 - Calculus",
+        "description": "Limits & Integration",
+        "createdAt": 1791184699491,
+        "questions": []
+      }
+    ]
+  },
+  {
+    "id": "subj_bio",
+    "name": "Biology",
+    "color": "#dc2626",
+    "files": [
+      {
+        "id": "bio_f1",
+        "name": "Mock Test 1 - Cell Structure",
+        "description": "Cell organelles",
+        "createdAt": 1791184699491,
+        "questions": [
+          {
+            "id": "q_b1",
+            "question": "Powerhouse of cell is?",
+            "options": {
+              "A": "Mitochondria",
+              "B": "Nucleus",
+              "C": "Ribosome",
+              "D": "Chloroplast"
+            },
+            "correct": "A",
+            "explanation": "Mitochondria produces ATP"
+          }
+        ]
+      }
+    ]
+  }
+]
