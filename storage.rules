@@ -1,0 +1,17 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    function signedIn() {
+      return request.auth != null;
+    }
+    function admin() {
+      return signedIn() &&
+        request.auth.token.email == "abhi.admin@examportal.app";
+    }
+
+    match /question-images/{allPaths=**} {
+      allow read: if signedIn();
+      allow write, delete: if admin();
+    }
+  }
+}
