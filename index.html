@@ -1,1 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examportal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
+<body>
+
+    <header class="navbar">
+        <div class="logo">EXAM<span>PORTAL</span></div>
+
+        <div class="nav-buttons">
+            <button onclick="showLogin()">Login</button>
+            <button class="signup-btn" onclick="showSignup()">Sign Up</button>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="hero">
+            <p class="tag">SMART ONLINE TEST PLATFORM</p>
+
+            <h1>Prepare. Practice.<br><span>Perform.</span></h1>
+
+            <p class="subtitle">
+                Take mock tests, practice questions and track your performance.
+            </p>
+
+            <button class="start-btn" onclick="showClasses()">
+                Start Your Test →
+            </button>
+        </section>
+
+        <section id="classes" class="classes-section hidden">
+
+            <h2>Choose Your Class</h2>
+            <p>Select your class to continue</p>
+
+            <div class="class-grid">
+                <button onclick="selectClass(6)">Class 6</button>
+                <button onclick="selectClass(7)">Class 7</button>
+                <button onclick="selectClass(8)">Class 8</button>
+                <button onclick="selectClass(9)">Class 9</button>
+                <button onclick="selectClass(10)">Class 10</button>
+                <button onclick="selectClass(11)">Class 11</button>
+                <button onclick="selectClass(12)">Class 12</button>
+            </div>
+
+        </section>
+
+    </main>
+
+    <div id="loginBox" class="modal hidden">
+        <div class="modal-content">
+            <button class="close" onclick="closeModal()">×</button>
+
+            <h2>Student Login</h2>
+
+            <input type="email" placeholder="Email">
+            <input type="password" placeholder="Password">
+
+            <label class="remember">
+                <input type="checkbox">
+                Remember me
+            </label>
+
+            <button class="primary">Login</button>
+
+            <p>Don't have an account?
+                <a onclick="showSignup()">Sign Up</a>
+            </p>
+        </div>
+    </div>
+
+    <div id="signupBox" class="modal hidden">
+        <div class="modal-content">
+            <button class="close" onclick="closeModal()">×</button>
+
+            <h2>Create Account</h2>
+
+            <input type="text" placeholder="Full Name">
+            <input type="email" placeholder="Email">
+            <input type="password" placeholder="Create Password">
+
+            <button class="primary">Create Account</button>
+
+            <p>Already have an account?
+                <a onclick="showLogin()">Login</a>
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        © 2026 Examportal
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
