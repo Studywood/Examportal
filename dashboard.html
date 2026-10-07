@@ -1,1 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Examportal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
+<body>
+
+<header class="navbar">
+    <div class="logo">EXAM<span>PORTAL</span></div>
+
+    <div class="nav-buttons">
+        <button onclick="logout()">Logout</button>
+    </div>
+</header>
+
+<main class="dashboard">
+
+    <section class="dashboard-header">
+        <p class="tag">STUDENT DASHBOARD</p>
+        <h1>Welcome, <span id="studentName">Student</span> 👋</h1>
+        <p>Select a subject and start practising.</p>
+    </section>
+
+    <section class="dashboard-cards">
+
+        <div class="dashboard-card">
+            <div class="card-icon">📚</div>
+            <h2>Mathematics</h2>
+            <p>Practice important questions and mock tests.</p>
+            <button onclick="openTest('Mathematics')">View Tests →</button>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="card-icon">🔬</div>
+            <h2>Science</h2>
+            <p>Practice Physics, Chemistry and Biology.</p>
+            <button onclick="openTest('Science')">View Tests →</button>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="card-icon">🌍</div>
+            <h2>Social Science</h2>
+            <p>History, Geography, Civics and Economics.</p>
+            <button onclick="openTest('Social Science')">View Tests →</button>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="card-icon">📝</div>
+            <h2>All Mock Tests</h2>
+            <p>Attempt complete examination-style tests.</p>
+            <button onclick="openTest('All')">View Tests →</button>
+        </div>
+
+    </section>
+
+</main>
+
+<script>
+function logout() {
+    localStorage.removeItem("examportal_user");
+    window.location.href = "index.html";
+}
+
+function openTest(subject) {
+    localStorage.setItem("selected_subject", subject);
+    window.location.href = "test.html";
+}
+
+const user = JSON.parse(localStorage.getItem("examportal_user"));
+
+if (user) {
+    document.getElementById("studentName").textContent =
+        user.name || "Student";
+}
+</script>
+
+</body>
+</html>
