@@ -1,1 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result - Examportal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
+<body>
+
+<header class="navbar">
+    <div class="logo">EXAM<span>PORTAL</span></div>
+</header>
+
+<main class="result-page">
+
+    <div class="result-card">
+
+        <div class="result-icon">✓</div>
+
+        <p class="tag">TEST COMPLETED</p>
+
+        <h1>Your Result</h1>
+
+        <h2 id="score">0 / 0</h2>
+
+        <p id="message"></p>
+
+        <div class="result-buttons">
+            <button onclick="window.location.href='test.html'">
+                Try Again
+            </button>
+
+            <button onclick="window.location.href='dashboard.html'">
+                Dashboard
+            </button>
+        </div>
+
+    </div>
+
+</main>
+
+<script>
+
+const result =
+    JSON.parse(localStorage.getItem("last_score"));
+
+if (result) {
+
+    document.getElementById("score").textContent =
+        result.score + " / " + result.total;
+
+    const percentage =
+        (result.score / result.total) * 100;
+
+    document.getElementById("message").textContent =
+        "You scored " + percentage.toFixed(0) + "% in " +
+        result.subject + ".";
+}
+
+</script>
+
+</body>
+</html>
