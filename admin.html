@@ -1,1 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Admin Login - Examportal</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="logo">EXAM<span>PORTAL</span></div>
+</header>
+
+<main class="admin-login-page">
+
+    <div class="admin-login-card">
+
+        <div class="admin-icon">⚙</div>
+
+        <p class="tag">ADMINISTRATION</p>
+
+        <h1>Admin Login</h1>
+
+        <p class="admin-subtitle">
+            Sign in to manage Examportal.
+        </p>
+
+        <form id="adminLoginForm">
+
+            <label>Username</label>
+
+            <input
+                type="text"
+                id="adminUsername"
+                placeholder="Enter admin username"
+                autocomplete="username"
+                required
+            >
+
+            <label>Password</label>
+
+            <input
+                type="password"
+                id="adminPassword"
+                placeholder="Enter admin password"
+                autocomplete="current-password"
+                required
+            >
+
+            <label class="remember">
+                <input type="checkbox" id="adminRemember">
+                Remember me
+            </label>
+
+            <button type="submit" class="primary">
+                Login to Admin Panel
+            </button>
+
+            <p id="adminMessage" class="admin-message"></p>
+
+        </form>
+
+        <a href="index.html" class="back-link">
+            ← Back to Examportal
+        </a>
+
+    </div>
+
+</main>
+
+<footer>
+    © 2026 Examportal
+</footer>
+
+<script>
+
+const ADMIN_API =
+    "https://examportal-api.abhinandanofficial-naha.workers.dev";
+
+document
+    .getElementById("adminLoginForm")
+    .addEventListener("submit", async function(event) {
+
+        event.preventDefault();
+
+        const username =
+            document.getElementById("adminUsername").value.trim();
+
+        const password =
+            document.getElementById("adminPassword").value;
+
+        const message =
+            document.getElementById("adminMessage");
+
+        message.textContent = "Signing in...";
+
+        try {
+
+            const response = await fetch(
+                ADMIN_API + "/admin-login",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        username: username,
+                        password: password
+                    })
+                }
+            );
+
+            const result = await response.json();
+
+            if (!response.ok || !result.success) {
+                throw new Error(
+                    result.message || "Invalid admin credentials."
+                );
+            }
+
+            localStorage.setItem(
+                "examportal_admin",
+                JSON.stringify(result.admin)
+            );
+
+            window.location.href = "admin-dashboard.html";
+
+        } catch (error) {
+
+            message.textContent = error.message;
+
+        }
+
+    });
+
+</script>
+
+</body>
+</html>
