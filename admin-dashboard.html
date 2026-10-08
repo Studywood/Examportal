@@ -1,475 +1,363 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Admin Dashboard - Examportal</title>
-
-    <link rel="stylesheet" href="style.css">
-
-    <style>
-        body {
-            background: #f6f8fc;
-        }
-
-        .admin-layout {
-            display: flex;
-            min-height: calc(100vh - 70px);
-        }
-
-        .admin-sidebar {
-            width: 240px;
-            background: #111827;
-            color: white;
-            padding: 28px 16px;
-        }
-
-        .admin-sidebar h3 {
-            font-size: 13px;
-            color: #94a3b8;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 0 14px;
-            margin-bottom: 15px;
-        }
-
-        .admin-nav button {
-            width: 100%;
-            border: none;
-            background: transparent;
-            color: #cbd5e1;
-            text-align: left;
-            padding: 13px 14px;
-            margin-bottom: 5px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .admin-nav button:hover,
-        .admin-nav button.active {
-            background: #2563eb;
-            color: white;
-        }
-
-        .admin-main {
-            flex: 1;
-            padding: 35px;
-            max-width: 1400px;
-        }
-
-        .admin-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .admin-top h1 {
-            font-size: 30px;
-            margin-bottom: 6px;
-        }
-
-        .admin-top p {
-            color: #64748b;
-        }
-
-        .admin-user {
-            background: white;
-            border: 1px solid #e5e7eb;
-            padding: 10px 15px;
-            border-radius: 10px;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .admin-stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
-            margin-bottom: 35px;
-        }
-
-        .stat-card {
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 14px;
-            padding: 22px;
-        }
-
-        .stat-card p {
-            color: #64748b;
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
-
-        .stat-card h2 {
-            font-size: 30px;
-        }
-
-        .admin-section {
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 14px;
-            padding: 25px;
-        }
-
-        .section-heading {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 22px;
-        }
-
-        .section-heading h2 {
-            font-size: 20px;
-        }
-
-        .create-test-btn {
-            background: #2563eb;
-            color: white;
-            border: none;
-            padding: 11px 17px;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .create-test-btn:hover {
-            background: #1d4ed8;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 55px 20px;
-            color: #64748b;
-        }
-
-        .empty-icon {
-            font-size: 40px;
-            margin-bottom: 15px;
-        }
-
-        .empty-state h3 {
-            color: #172033;
-            margin-bottom: 8px;
-        }
-
-        .admin-logout {
-            color: #fca5a5 !important;
-            margin-top: 25px !important;
-        }
-
-        @media (max-width: 900px) {
-
-            .admin-stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .admin-sidebar {
-                width: 200px;
-            }
-        }
-
-        @media (max-width: 650px) {
-
-            .admin-layout {
-                display: block;
-            }
-
-            .admin-sidebar {
-                width: 100%;
-                padding: 15px;
-            }
-
-            .admin-sidebar h3 {
-                display: none;
-            }
-
-            .admin-nav {
-                display: flex;
-                gap: 6px;
-                overflow-x: auto;
-            }
-
-            .admin-nav button {
-                white-space: nowrap;
-                width: auto;
-            }
-
-            .admin-main {
-                padding: 22px 16px;
-            }
-
-            .admin-top {
-                display: block;
-            }
-
-            .admin-user {
-                display: inline-block;
-                margin-top: 15px;
-            }
-
-            .admin-stats {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard - Examportal</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body{background:#f6f8fc;color:#172033}
+.admin-layout{display:flex;min-height:calc(100vh - 70px)}
+.admin-sidebar{width:220px;background:#111827;color:white;padding:24px 14px;flex-shrink:0}
+.admin-sidebar h3{font-size:13px;color:#94a3b8;padding:0 12px}
+.admin-nav button{display:block;width:100%;border:0;background:transparent;color:#cbd5e1;text-align:left;padding:13px;border-radius:8px;margin:4px 0;cursor:pointer}
+.admin-nav button:hover,.admin-nav button.active{background:#2563eb;color:white}
+.admin-main{flex:1;padding:28px;min-width:0}
+.admin-top,.section-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:22px}
+.admin-top h1{font-size:28px;margin:5px 0}
+.admin-user,.stat-card,.admin-section,.test-card,.form-card{background:white;border:1px solid #e5e7eb;border-radius:12px;padding:18px}
+.admin-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:22px}
+.stat-card p{color:#64748b;font-size:14px;margin:0 0 10px}
+.stat-card h2{font-size:27px;margin:0}
+.admin-section{margin-bottom:22px}
+.primary,.secondary,.delete-btn{border:0;border-radius:8px;padding:11px 15px;cursor:pointer;font-weight:600}
+.primary{background:#2563eb;color:white}
+.secondary{background:#e5e7eb;color:#172033}
+.delete-btn{background:#fee2e2;color:#991b1b}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.field{margin-bottom:14px}
+.field label{display:block;font-weight:600;font-size:14px;margin-bottom:6px}
+.field input,.field select,.field textarea{width:100%;box-sizing:border-box;padding:11px;border:1px solid #cbd5e1;border-radius:8px;background:white;font:inherit}
+.question-card{border:1px solid #e5e7eb;padding:16px;border-radius:10px;margin:14px 0}
+.question-card h3{margin-top:0}
+.test-list{display:grid;gap:12px}
+.test-card h3{margin:0 0 8px}
+.test-card p{color:#64748b;margin:5px 0}
+.status{margin:12px 0;white-space:pre-wrap;overflow-wrap:anywhere}
+.hidden{display:none!important}
+.admin-logout{color:#fca5a5!important}
+@media(max-width:850px){.admin-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.admin-layout{display:block}.admin-sidebar{width:auto}.admin-nav{display:flex;overflow-x:auto;gap:5px}.admin-nav button{white-space:nowrap;width:auto}.admin-main{padding:18px 12px}}
+@media(max-width:480px){.form-grid{grid-template-columns:1fr}.admin-top{align-items:flex-start;flex-direction:column}.admin-stats{gap:8px}.stat-card{padding:12px}}
+</style>
 </head>
-
 <body>
 
 <header class="navbar">
-
-    <div class="logo">
-        EXAM<span>PORTAL</span>
-    </div>
-
-    <div class="nav-buttons">
-        <button onclick="logoutAdmin()">Logout</button>
-    </div>
-
+  <div class="logo">EXAM<span>PORTAL</span></div>
+  <div class="nav-buttons"><button onclick="logoutAdmin()">Logout</button></div>
 </header>
 
-
 <div class="admin-layout">
+<aside class="admin-sidebar">
+  <h3>ADMIN PANEL</h3>
+  <nav class="admin-nav">
+    <button class="active" onclick="showSection('overview',this)">Dashboard</button>
+    <button onclick="showSection('tests',this)">Tests</button>
+    <button onclick="showSection('students',this)">Students</button>
+    <button onclick="showSection('results',this)">Results</button>
+    <button class="admin-logout" onclick="logoutAdmin()">Logout</button>
+  </nav>
+</aside>
 
-    <!-- SIDEBAR -->
+<main class="admin-main">
+  <div class="admin-top">
+    <div>
+      <p class="tag">ADMINISTRATION</p>
+      <h1>Dashboard</h1>
+      <p>Manage your Examportal platform.</p>
+    </div>
+    <div class="admin-user" id="adminUser">Admin</div>
+  </div>
 
-    <aside class="admin-sidebar">
+  <div id="status" class="status" role="status"></div>
 
-        <h3>Admin Panel</h3>
+  <section id="overview">
+    <div class="admin-stats">
+      <div class="stat-card"><p>Total Students</p><h2 id="studentCount">—</h2></div>
+      <div class="stat-card"><p>Total Tests</p><h2 id="testCount">—</h2></div>
+      <div class="stat-card"><p>Total Attempts</p><h2 id="attemptCount">—</h2></div>
+      <div class="stat-card"><p>Available Tests</p><h2 id="publishedCount">—</h2></div>
+    </div>
+    <section class="admin-section">
+      <div class="section-heading">
+        <h2>Test Management</h2>
+        <button class="primary" onclick="showSection('tests')">Manage Tests →</button>
+      </div>
+      <div id="overviewTests" class="test-list">Loading tests…</div>
+    </section>
+  </section>
 
-        <nav class="admin-nav">
+  <section id="tests" class="hidden">
+    <section class="admin-section">
+      <div class="section-heading">
+        <h2>Manage Tests</h2>
+        <button class="primary" onclick="toggleCreateForm()">+ Create Test</button>
+      </div>
+      <div id="testList" class="test-list">Loading tests…</div>
+    </section>
 
-            <button class="active">
-                Dashboard
-            </button>
-
-            <button onclick="showComingSoon('Tests')">
-                Tests
-            </button>
-
-            <button onclick="showComingSoon('Students')">
-                Students
-            </button>
-
-            <button onclick="showComingSoon('Results')">
-                Results
-            </button>
-
-            <button onclick="showComingSoon('Settings')">
-                Settings
-            </button>
-
-            <button
-                class="admin-logout"
-                onclick="logoutAdmin()">
-                Logout
-            </button>
-
-        </nav>
-
-    </aside>
-
-
-    <!-- MAIN -->
-
-    <main class="admin-main">
-
-        <div class="admin-top">
-
-            <div>
-
-                <p class="tag">
-                    ADMINISTRATION
-                </p>
-
-                <h1>
-                    Dashboard
-                </h1>
-
-                <p>
-                    Manage your Examportal platform.
-                </p>
-
-            </div>
-
-            <div
-                class="admin-user"
-                id="adminUser">
-                Admin
-            </div>
-
+    <section id="createForm" class="form-card hidden">
+      <h2>Create a Mock Test</h2>
+      <p>Enter the details and add questions below.</p>
+      <form id="testForm">
+        <div class="form-grid">
+          <div class="field">
+            <label for="testTitle">Test title</label>
+            <input id="testTitle" required maxlength="150" placeholder="e.g. Mathematics Mock Test 1">
+          </div>
+          <div class="field">
+            <label for="testClass">Class</label>
+            <select id="testClass" required>
+              <option value="">Select class</option>
+              <option value="6">Class 6</option><option value="7">Class 7</option>
+              <option value="8">Class 8</option><option value="9">Class 9</option>
+              <option value="10">Class 10</option><option value="11">Class 11</option>
+              <option value="12">Class 12</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="testSubject">Subject</label>
+            <input id="testSubject" required maxlength="100" placeholder="e.g. Mathematics">
+          </div>
+          <div class="field">
+            <label for="testDuration">Duration (minutes)</label>
+            <input id="testDuration" type="number" required min="1" max="600" value="60">
+          </div>
+          <div class="field">
+            <label for="testMarks">Total marks</label>
+            <input id="testMarks" type="number" required min="1" max="10000" value="10">
+          </div>
         </div>
 
+        <div id="questions"></div>
+        <button type="button" class="secondary" onclick="addQuestion()">+ Add Question</button>
+        <div class="status" id="formStatus"></div>
+        <button type="submit" class="primary" id="saveTestBtn">Save Test</button>
+        <button type="button" class="secondary" onclick="toggleCreateForm()">Cancel</button>
+      </form>
+    </section>
+  </section>
 
-        <!-- STATISTICS -->
-
-        <section class="admin-stats">
-
-            <div class="stat-card">
-
-                <p>Total Students</p>
-
-                <h2 id="studentCount">
-                    0
-                </h2>
-
-            </div>
-
-
-            <div class="stat-card">
-
-                <p>Total Tests</p>
-
-                <h2 id="testCount">
-                    0
-                </h2>
-
-            </div>
-
-
-            <div class="stat-card">
-
-                <p>Total Attempts</p>
-
-                <h2 id="attemptCount">
-                    0
-                </h2>
-
-            </div>
-
-
-            <div class="stat-card">
-
-                <p>Published Tests</p>
-
-                <h2 id="publishedCount">
-                    0
-                </h2>
-
-            </div>
-
-        </section>
-
-
-        <!-- TEST MANAGEMENT -->
-
-        <section class="admin-section">
-
-            <div class="section-heading">
-
-                <div>
-                    <h2>
-                        Test Management
-                    </h2>
-                </div>
-
-                <button
-                    class="create-test-btn"
-                    onclick="createTest()">
-
-                    + Create Test
-
-                </button>
-
-            </div>
-
-
-            <div class="empty-state">
-
-                <div class="empty-icon">
-                    📋
-                </div>
-
-                <h3>
-                    No tests created yet
-                </h3>
-
-                <p>
-                    Create your first mock test to make it
-                    available to students.
-                </p>
-
-            </div>
-
-        </section>
-
-    </main>
-
+  <section id="students" class="admin-section hidden">
+    <h2>Students</h2>
+    <p id="studentsMessage">Student listing is not connected to this dashboard yet.</p>
+  </section>
+  <section id="results" class="admin-section hidden">
+    <h2>Results</h2>
+    <p>Attempt history and result analytics are not connected yet.</p>
+  </section>
+</main>
 </div>
 
-
 <script>
+const API = "https://examportal-api.abhinandanofficial-naha.workers.dev";
+let questionCount = 0;
 
-    // ==============================
-    // CHECK ADMIN LOGIN
-    // ==============================
+let admin;
+try {
+  admin = JSON.parse(localStorage.getItem("examportal_admin") || "null");
+} catch (_) {
+  admin = null;
+}
 
-    const admin =
-        JSON.parse(
-            localStorage.getItem("examportal_admin")
-        );
+if (!admin || admin.role !== "admin") {
+  window.location.href = "admin.html";
+} else {
+  document.getElementById("adminUser").textContent = admin.username || "Admin";
+}
 
-    if (!admin || admin.role !== "admin") {
+function logoutAdmin() {
+  localStorage.removeItem("examportal_admin");
+  window.location.href = "admin.html";
+}
 
-        window.location.href =
-            "admin.html";
+function showStatus(message) {
+  document.getElementById("status").textContent = message || "";
+}
 
-    } else {
+function showSection(id, button) {
+  ["overview","tests","students","results"].forEach(section => {
+    document.getElementById(section).classList.toggle("hidden", section !== id);
+  });
+  document.querySelectorAll(".admin-nav button").forEach(b => b.classList.remove("active"));
+  if (button) button.classList.add("active");
+  showStatus("");
+  if (id === "tests") loadTests();
+}
 
-        document
-            .getElementById("adminUser")
-            .textContent =
-            admin.username;
+function toggleCreateForm() {
+  const form = document.getElementById("createForm");
+  form.classList.toggle("hidden");
+  if (!form.classList.contains("hidden") && questionCount === 0) addQuestion();
+}
 
+function addQuestion() {
+  questionCount++;
+  const number = questionCount;
+  const card = document.createElement("div");
+  card.className = "question-card";
+  card.dataset.question = number;
+  card.innerHTML = `
+    <h3>Question ${number}</h3>
+    <div class="field">
+      <label>Question text</label>
+      <textarea class="q-text" required rows="3" placeholder="Write the question here"></textarea>
+    </div>
+    <div class="form-grid">
+      ${[0,1,2,3].map(i => `
+        <div class="field">
+          <label>Option ${String.fromCharCode(65+i)}</label>
+          <input class="q-option" required placeholder="Enter option ${String.fromCharCode(65+i)}">
+        </div>`).join("")}
+    </div>
+    <div class="form-grid">
+      <div class="field">
+        <label>Correct answer</label>
+        <select class="q-answer">
+          <option value="0">Option A</option><option value="1">Option B</option>
+          <option value="2">Option C</option><option value="3">Option D</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Marks for this question</label>
+        <input class="q-marks" type="number" min="1" max="1000" value="1" required>
+      </div>
+    </div>
+    <button type="button" class="delete-btn" onclick="this.closest('.question-card').remove()">Remove question</button>`;
+  document.getElementById("questions").appendChild(card);
+}
+
+async function getTests() {
+  const response = await fetch(API + "/tests");
+  const data = await response.json();
+  if (!response.ok) throw new Error(data.message || "Could not load tests.");
+  return Array.isArray(data) ? data : (data.tests || []);
+}
+
+function renderTests(tests, targetId) {
+  const target = document.getElementById(targetId);
+  target.replaceChildren();
+
+  if (!tests.length) {
+    target.textContent = "No tests found yet. Use Create Test to add one.";
+    return;
+  }
+
+  tests.forEach(test => {
+    const card = document.createElement("article");
+    card.className = "test-card";
+    const title = document.createElement("h3");
+    title.textContent = test.title || "Untitled test";
+    const details = document.createElement("p");
+    details.textContent =
+      "Class " + (test.class_number ?? "—") + " · " +
+      (test.subject || "Subject not set") + " · " +
+      (test.duration_minutes ?? "—") + " minutes · " +
+      (test.total_marks ?? "—") + " marks";
+    card.append(title, details);
+    target.appendChild(card);
+  });
+}
+
+async function loadTests() {
+  const list = document.getElementById("testList");
+  list.textContent = "Loading tests…";
+  try {
+    const tests = await getTests();
+    renderTests(tests, "testList");
+    renderTests(tests.slice(0, 3), "overviewTests");
+    document.getElementById("testCount").textContent = tests.length;
+    document.getElementById("publishedCount").textContent = tests.length;
+  } catch (error) {
+    list.textContent = "Could not load tests: " + error.message;
+    document.getElementById("overviewTests").textContent =
+      "Could not load tests: " + error.message;
+    showStatus("The API may be unavailable or its response format may differ.");
+  }
+}
+
+document.getElementById("testForm").addEventListener("submit", async function(event) {
+  event.preventDefault();
+  const formStatus = document.getElementById("formStatus");
+  const saveButton = document.getElementById("saveTestBtn");
+  const cards = [...document.querySelectorAll(".question-card")];
+
+  if (!cards.length) {
+    formStatus.textContent = "Please add at least one question.";
+    return;
+  }
+
+  let questions = [];
+  for (const card of cards) {
+    const text = card.querySelector(".q-text").value.trim();
+    const options = [...card.querySelectorAll(".q-option")].map(input => input.value.trim());
+    const answerIndex = Number(card.querySelector(".q-answer").value);
+    const marks = Number(card.querySelector(".q-marks").value);
+
+    if (!text || options.some(option => !option)) {
+      formStatus.textContent = "Complete every question and all four options.";
+      return;
     }
 
+    questions.push({
+      question: text,
+      options,
+      answer: options[answerIndex],
+      marks
+    });
+  }
 
-    // ==============================
-    // LOGOUT
-    // ==============================
+  const totalMarks = Number(document.getElementById("testMarks").value);
+  const questionMarks = questions.reduce((sum, q) => sum + q.marks, 0);
+  if (questionMarks !== totalMarks) {
+    formStatus.textContent =
+      "Question marks add up to " + questionMarks +
+      ", but Total marks is " + totalMarks +
+      ". Please make them match.";
+    return;
+  }
 
-    function logoutAdmin() {
+  const payload = {
+    title: document.getElementById("testTitle").value.trim(),
+    class_number: Number(document.getElementById("testClass").value),
+    subject: document.getElementById("testSubject").value.trim(),
+    duration_minutes: Number(document.getElementById("testDuration").value),
+    total_marks: totalMarks,
+    questions
+  };
 
-        localStorage.removeItem(
-            "examportal_admin"
-        );
+  saveButton.disabled = true;
+  formStatus.textContent = "Saving test…";
 
-        window.location.href =
-            "admin.html";
+  try {
+    const response = await fetch(API + "/tests", {
+      method: "POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify(payload)
+    });
+
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || result.success === false) {
+      throw new Error(result.message || result.error || ("API returned HTTP " + response.status));
     }
 
+    formStatus.textContent = "Test saved. Refreshing test list…";
+    document.getElementById("testForm").reset();
+    document.getElementById("questions").replaceChildren();
+    questionCount = 0;
+    document.getElementById("createForm").classList.add("hidden");
+    await loadTests();
+    showStatus("Test saved successfully.");
+  } catch (error) {
+    formStatus.textContent =
+      "Could not save the test: " + error.message +
+      "\nYour existing Worker may not support this request format yet. Do not change other files; send me this exact error.";
+  } finally {
+    saveButton.disabled = false;
+  }
+});
 
-    // ==============================
-    // CREATE TEST
-    // ==============================
-
-    function createTest() {
-
-        alert(
-            "Test Creator will be added next."
-        );
-
-    }
-
-
-    // ==============================
-    // OTHER SECTIONS
-    // ==============================
-
-    function showComingSoon(section) {
-
-        alert(
-            section +
-            " management will be added next."
-        );
-
-    }
-
+loadTests();
 </script>
-
 </body>
 </html>
